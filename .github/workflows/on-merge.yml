@@ -21,4 +21,4 @@ jobs:
           aws-region: us-east-2
 
       - name: Deploy to luit
-        run: aws s3 sync . s3://luitluit-blue-website/ --acl public-read --delete
+        run: aws s3 sync . s3://luit-blue-website/ --acl public-read --delete

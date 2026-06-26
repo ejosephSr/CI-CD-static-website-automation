@@ -1,0 +1,21 @@
+name: Deploy to Beta
+
+on:
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+       name: Checkout code
+       uses: aws-actions/config-aws-credentiall@v2
+       with:
+          aws-access-key-id: ${{ secret.AWS_ACCESS_KEY_ID }}
+          AWS-secret-access-key: ${{ secret.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+
+       name: Deploy website to luit
+       run: aws s3 sync . s3://luit-blue-website/ --acl public-read --delete
+
+
